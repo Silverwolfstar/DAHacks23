@@ -34,13 +34,16 @@ class Item(pygame.sprite.Sprite):
         else:
             index = random.randint(0, len(availableList)-1)
 
-        item = pygame.image.load(availableList[index][2])
-        self.item = pygame.transform.scale(item, (int(item.get_width()*scale), 
-                                                  int(item.get_height()*scale)))
-        self.playerWidth = item.get_width()*scale
-        self.playerHeight = item.get_height()*scale
+        itemImage = pygame.image.load(availableList[index][2])
+        self.itemAnswer = availableList[index][2]
+        self.item = pygame.transform.scale(itemImage, (int(itemImage.get_width()*scale),
+                                                  int(itemImage.get_height()*scale)))
+        self.playerWidth = itemImage.get_width()*scale
+        self.playerHeight = itemImage.get_height()*scale
         self.rect = self.item.get_rect() #current position of item
 
+    def getAnswer(self):
+        return self.itemAnswer
 
     def move(self):
         #TODO: implement drag and drop
@@ -177,30 +180,25 @@ while run:
 
     #event handling
     for event in pygame.event.get():
-        #key pressed
-        if event.type == pygame.USEREVENT:
-            if hearts_num < 1:
-                gameOver = True
-            # 1 pressed
-            if event.key == pygame.K_1 and not gameOver:
-                #handle answer
-                pass
-            # 2 pressed
-            if event.key == pygame.K_2 and not gameOver:
-                #handle answer
-                pass
-            # 3 pressed
-            if event.key == pygame.K_3 and not gameOver:
-                #handle answer
-                pass
-            #space to replay
+        # Key pressed
+        if event.type == pygame.KEYDOWN:
+            # Check if the key pressed is 1, 2 or 3 and game is not over
+            if event.key in key_to_bin_mapping and not gameOver:
+                bin_index = key_to_bin_mapping[event.key]
+                if myItem.getAnswer() != binList[bin_index][1]:
+                    hearts_num -= 1
+                else:
+                    score += 1
+            # Space to replay
             if event.key == pygame.K_SPACE and gameOver:
-                #reset variables for new game
+                # Reset variables for new game
+                hearts_num = maxHearts
                 gameOver = False
-                #set new high score
-                if (score > highScore):
+                # Set new high score
+                if score > highScore:
                     highScore = score
                 score = 0
+
         if event.type == pygame.QUIT:
             run = False
 

@@ -48,3 +48,9 @@ availableList = defaultItemList[:]
 binList = [[1,"trash","img/trashBin.png"],
            [2,"recycle","img/recycleBin.png"],
            [3,"compost","img/compostBin.png"]]
+
+key_to_bin_mapping = {
+    pygame.K_1: 0,  # Mapping K_1 to index 0
+    pygame.K_2: 1,  # Mapping K_2 to index 1
+    pygame.K_3: 2   # Mapping K_3 to index 2
+}
