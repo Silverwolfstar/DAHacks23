@@ -63,16 +63,17 @@ class Bin(pygame.sprite.Sprite):
     def __init__(self, binNumber, x, scale):
         super().__init__()
         self.binNumber = binNumber
-        bin = pygame.image.load(binList[binNumber][2])
+        bin = pygame.image.load(binList[binNumber-1][2])
         self.bin = pygame.transform.scale(bin, (int(bin.get_width()*scale),
                                                   int(bin.get_height()*scale)))
-        self.playerWidth = bin.get_width()*scale
-        self.playerHeight = bin.get_height()*scale
+        self.binWidth = bin.get_width()*scale
+        self.binHeight = bin.get_height()*scale
         self.rect = self.bin.get_rect() #current position of bin
+        self.xBin = x
 
     def draw(self):
-        screen.blit(self.bin, (SCREEN_WIDTH/2-int(self.bin.get_width()/2),
-                                SCREEN_HEIGHT/3 - int(self.bin.get_height()/2)))
+        screen.blit(self.bin, (self.xBin,
+                                SCREEN_HEIGHT*3/4 - int(self.bin.get_height()/2)))
 
 
 
@@ -144,7 +145,12 @@ class Button():
 optionsButton = Button(optionsBoxCoord[0], optionsBoxCoord[1],
                        optionsBoxCoord[2], optionsBoxCoord[3], 'Options', Button.myFunction)
 myItem = Item(itemx, itemy - 400, .1)
-trashBin = Bin(1,200,) ###### AN YOU ARE WORKING HERE
+
+###### NEED TO CHANGE TRASH BIN X-POSITION FOR DIFFERENT SCREEN SIZE
+trashBin = Bin(1,10,0.12)
+recycleBin = Bin(2,SCREEN_WIDTH/2-120,0.12)
+compostBin = Bin(3,SCREEN_WIDTH-275,0.12)
+
 
 run = True
 while run:
@@ -152,6 +158,8 @@ while run:
     screen.fill('#D1FFBD')
     myItem.draw()
     trashBin.draw()
+    recycleBin.draw()
+    compostBin.draw()
 
 
     #process objects
