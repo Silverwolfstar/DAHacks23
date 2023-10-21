@@ -3,6 +3,9 @@
     Members: Jessie Kuo, Brandon Phan, Hannah Dinh, An Hoang'''
 
 import random
+
+import pygame
+
 from variables import *
 
 # Initialize Pygame
@@ -266,8 +269,9 @@ while run:
 
     #high score
     highScoreText = font.render('High Score:  ' + str(highScore), True, 'white', 'black')
+    highScoreText = pygame.transform.scale (highScoreText, (140,50))
     highScoreTextRect = highScoreText.get_rect()
-    highScoreTextRect.topleft = (500, 600)
+    highScoreTextRect.topleft = (SCREEN_WIDTH-highScoreText.get_width(), SCREEN_HEIGHT-highScoreText.get_height())
     screen.blit(highScoreText, highScoreTextRect)
 
     #Hearts
