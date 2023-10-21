@@ -189,6 +189,7 @@ while run:
     #event handling
     for event in pygame.event.get():
         if (hearts_num <1):
+            availableList = defaultItemList[:] #reset availableList
             gameOver = True
         # Key pressed
         if event.type == pygame.KEYDOWN:
@@ -198,6 +199,7 @@ while run:
                 if myItem.getAnswers() is None:
                     win = True
                     print("Congrats you win")
+                    availableList = defaultItemList[:] #reset availableList
                     gameOver = True
                 elif  binList[bin_index][1] in myItem.getAnswers():
                     score +=1
