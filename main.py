@@ -39,6 +39,7 @@ class Item(pygame.sprite.Sprite):
 
         itemImage = pygame.image.load(availableList[index][2])
         self.itemAnswers = availableList[index][1]
+        self.label = availableList[index][3]
         self.index = index
         self.item = pygame.transform.scale(itemImage, (int(itemImage.get_width()*scale),
                                                   int(itemImage.get_height()*scale)))
@@ -59,7 +60,7 @@ class Item(pygame.sprite.Sprite):
     def draw(self):
         if (self.item):
             screen.blit(self.item, (SCREEN_WIDTH/2-int(self.item.get_width()/2),
-                                SCREEN_HEIGHT/3 - int(self.item.get_height()/2)))
+                                SCREEN_HEIGHT/4 - int(self.item.get_height()/2)))
 
     #def update(self):
 
@@ -165,7 +166,6 @@ compostBin = Bin(3,SCREEN_WIDTH-275,0.12)
 
 run = True
 while run:
-    #TODO handle pressed keys
     screen.fill('#D1FFBD')
     myItem.draw()
     trashBin.draw()
@@ -207,14 +207,22 @@ while run:
                 else:
                     hearts_num -= 1
 
-                myItem = Item(itemx, itemy - 400, .1)
-                myItem.draw()
+                if (availableList):
+                    myItem = Item(itemx, itemy - 400, .1)
+                    myItem.draw()
+                else:
+                    win = True
+                    print("Congrats you win")
+                    availableList = defaultItemList[:] #reset availableList
+                    gameOver = True
+                    
 
             # Space to replay
             elif event.key == pygame.K_SPACE and gameOver:
                 # Reset variables for new game
                 hearts_num = maxHearts
                 gameOver = False
+                win = False
                 # Set new high score
                 if score > highScore:
                     highScore = score
@@ -222,7 +230,6 @@ while run:
         if event.type == pygame.QUIT:
             run = False
 
-    #game loss
     if gameOver:
         if win:
             gameOverText = bigFont.render('You Win!', True, 'white', 'black')
@@ -239,6 +246,14 @@ while run:
         screen.blit(gameOverText, gameOverTextRect)
         screen.blit(endScoreText, endScoreTextRect)
         screen.blit(replayText, replayTextRect)
+
+    #item label text
+    if myItem:
+        labelText = font.render(myItem.label, True, 'black', None)
+        #labelText = pygame.transform.scale(labelText,(100,40))
+        labelTextRect = labelText.get_rect()
+        labelTextRect.topleft = (SCREEN_WIDTH/2 - (labelText.get_width()/2), SCREEN_HEIGHT/2 - (labelText.get_height()/2))
+        screen.blit(labelText, labelTextRect)
 
 
     #score text
