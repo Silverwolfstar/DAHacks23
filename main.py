@@ -3,7 +3,7 @@
     Members: Jessie Kuo, Brandon Phan, Hannah Dinh, An Hoang'''
 
 
-from game import *
+from game_logic import *
 
 # Initialize Pygame
 pygame.init()
@@ -26,9 +26,17 @@ class Item(pygame.sprite.Sprite):
 
     def __init__(self, x, y, scale):
         super().__init__()
-        item = pygame.image.load('img/testItem.png')
-        self.item = pygame.transform.scale(item,
-                                           (int(item.get_width()*scale), int(item.get_height()*scale)))
+        #if no more items in availableList, then win game
+        if (len(availableList) < 1):
+            #pick random item to load, then remove from availableList
+            win = True
+            gameOver = True #TODO
+        else:
+            index = random.randint(0, len(availableList)-1)
+
+        item = pygame.image.load(availableList[index][2])
+        self.item = pygame.transform.scale(item, (int(item.get_width()*scale), 
+                                                  int(item.get_height()*scale)))
         self.playerWidth = item.get_width()*scale
         self.playerHeight = item.get_height()*scale
         self.rect = self.item.get_rect() #current position of item
@@ -117,7 +125,7 @@ class Button():
 #define entities
 optionsButton = Button(optionsBoxCoord[0], optionsBoxCoord[1],
                        optionsBoxCoord[2], optionsBoxCoord[3], 'Options', Button.myFunction)
-myItem = Item(itemx, itemy - 400, .25)
+myItem = Item(itemx, itemy - 400, .1)
 
 
 run = True
