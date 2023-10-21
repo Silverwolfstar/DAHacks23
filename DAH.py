@@ -2,14 +2,11 @@
     Team: nullptr
     Members: Jessie Kuo, Brandon Phan, Hannah Dinh, An Hoang'''
 
-
 #import libraries
 import pygame
 
-
 #mainClock = pygame.time.Clock()
 pygame.init()
-
 
 #variables
 maxHearts = 3 #TODO can change later
@@ -23,28 +20,23 @@ highScore = 0 #might implement a scoreboard? idk
 gameOver = False
 objects = []
 
-
 #screen settings
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = int(SCREEN_WIDTH * 0.8)
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-
 pygame.display.set_caption('Recycling Game')
 font = pygame.font.SysFont('papyrus', 20, True)
 bigFont = pygame.font.SysFont('papyrus', 30, True) #TODO fix this, no papyrus
-
 
 #icon
 gameIcon = pygame.image.load('img/testIcon.png') #TODO add this
 pygame.display.set_icon(gameIcon)
 
-
 #Functions: ?????????
 class Item(pygame.sprite.Sprite):
     playerWidth = 0
     playerHeight = 0
-
 
     def __init__(self, x, y, scale):
         super().__init__()
@@ -56,21 +48,17 @@ class Item(pygame.sprite.Sprite):
         self.rect = self.item.get_rect() #current position of item
         self.rect.center = (x, y)
 
-
     def move(self):
         #TODO: implement drag and drop
         key = pygame.key.get_pressed()
         #TODO: implement collision detection
-
 
     def draw(self):
         screen.blit(self.item, (SCREEN_WIDTH/2-int(self.item.get_width()/2),
                     SCREEN_HEIGHT/3 - int(self.item.get_height()/2)))
        
     #def update(self):
-       
         #maybe later
-
 
 class Button():
     def __init__(self, x, y, width, height, buttonText='Button', onclickFunction=None, onePress=False):
@@ -82,20 +70,17 @@ class Button():
         self.onePress = onePress
         self.alreadyPressed = False
 
-
         #Can change this
         self.fillColors = {
-            'normal': 'black',
-            'hover': 'white',
+            'normal': 'white',
+            'hover': 'grey',
             'pressed': 'black',
         }
-
 
         self.buttonSurface = pygame.Surface((self.width, self.height))
         self.buttonRect = pygame.Rect(self.x, self.y, self.width, self.height)
         self.buttonSurf = font.render(buttonText, True, (20, 20, 20))
         objects.append(self)
-
 
     def process(self):
         mousePos = pygame.mouse.get_pos()
@@ -105,19 +90,15 @@ class Button():
         if self.buttonRect.collidepoint(mousePos): #if mouse on button
             self.buttonSurface.fill(self.fillColors['hover']) #change to hover color
 
-
             if pygame.mouse.get_pressed(num_buttons=3)[0]:
                 self.buttonSurface.fill(self.fillColors['pressed'])
-
 
                 if self.onePress: #if pressed
                     self.onclickFunction()
 
-
                 elif not self.alreadyPressed:
                     self.onclickFunction()
                     self.alreadyPressed = True
-
 
             else:
                 self.alreadyPressed = False
@@ -127,27 +108,22 @@ class Button():
             self.buttonRect.height/2 - self.buttonSurf.get_rect().height/2])
         screen.blit(self.buttonSurface, self.buttonRect)
 
-
     def myFunction():
         print('Open Option Menu')
 
-
 #Below is example of multipress button
 #Button(30, 140, 400, 100, 'Button Two (multiPress)', Button.myFunction, True)
-
 
 #define entities
 optionsButton = Button(optionsBoxCoord[0], optionsBoxCoord[1],
         optionsBoxCoord[2], optionsBoxCoord[3], 'Options', Button.myFunction)
 myItem = Item(itemx, itemy - 400, .25)
 
-
 run = True
 while run:
     #TODO handle pressed keys
     screen.fill("black")
     myItem.draw()
-
 
     #process objects
     for object in objects:
@@ -156,7 +132,6 @@ while run:
     #draw score box
     pygame.draw.rect(screen, 'white', (textBoxCoord[0], textBoxCoord[1],
         textBoxCoord[2], textBoxCoord[3]), 1)
-
 
     #draw option box
     pygame.draw.rect(screen, 'white', (optionsBoxCoord[0], optionsBoxCoord[1],
@@ -191,7 +166,6 @@ while run:
         if event.type == pygame.QUIT:
              run = False
 
-
     #game end
     if (gameOver):
         gameOverText = bigFont.render('Game Over!', True, 'white', 'black')
@@ -207,13 +181,11 @@ while run:
         screen.blit(endScoreText, endScoreTextRect)
         screen.blit(replayText, replayTextRect)
 
-
     #score text
     scoreText = font.render('Score:  ' + str(score), True, 'white', 'black')
     scoreTextRect = scoreText.get_rect()
     scoreTextRect.topleft = (50, 40)
     screen.blit(scoreText, scoreTextRect)
-
 
     #high score
     highScoreText = font.render('High Score:  ' + str(highScore), True, 'white', 'black')
@@ -221,13 +193,11 @@ while run:
     highScoreTextRect.topleft = (500, 600)
     screen.blit(highScoreText, highScoreTextRect)
 
-
-    #options
-    optionsText = font.render('Options', True, 'white')
-    optionsTextRect = optionsText.get_rect()
-    optionsTextRect.topleft = (25, 590)
-    screen.blit(optionsText, optionsTextRect)
-
+    # options
+    # optionsText = font.render('Options', True, 'grey')
+    # optionsTextRect = optionsText.get_rect()
+    # optionsTextRect.topleft = (25, 590)
+    # screen.blit(optionsText, optionsTextRect)
 
     #update display and clock
     pygame.display.update()
