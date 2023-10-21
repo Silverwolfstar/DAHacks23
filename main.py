@@ -36,18 +36,20 @@ class Item(pygame.sprite.Sprite):
             self.item = None
             return  # Exit the __init__ early if the game is won
         index = random.randint(0, len(availableList)-1)
+        #print("aaa = ", index)
 
         itemImage = pygame.image.load(availableList[index][2])
-        self.itemAnswer = availableList[index][1]
+        self.itemAnswers = availableList[index][1]
+        self.index = index #TODO MIGHT NEED TO REMOVE
         self.item = pygame.transform.scale(itemImage, (int(itemImage.get_width()*scale),
                                                   int(itemImage.get_height()*scale)))
         self.playerWidth = itemImage.get_width()*scale
         self.playerHeight = itemImage.get_height()*scale
         self.rect = self.item.get_rect() #current position of item
 
-    def getAnswer(self):
+    def getAnswers(self):
         if (self.item):
-            return self.itemAnswer
+            return self.itemAnswers
 
     def move(self):
         #TODO: implement drag and drop
@@ -194,13 +196,18 @@ while run:
             # Check if the key pressed is 1, 2 or 3 and game is not over
             if event.key in key_to_bin_mapping and not gameOver:
                 bin_index = key_to_bin_mapping[event.key]
-                if  binList[bin_index][1] == myItem.getAnswer():
+                if myItem.getAnswers() is None:
+                    win = True
+                    print("Congrats you win")
+                    #copy gameOver logic into win, remove next line
+                    gameOver = True
+                elif  binList[bin_index][1] in myItem.getAnswers():
                     score +=1
-                    availableList.pop(bin_index)
+                    print("index = ", myItem.index)
+                    availableList.pop(myItem.index)
                 else:
                     hearts_num -= 1
 
-                print (availableList)
                 myItem = Item(itemx, itemy - 400, .1)
                 myItem.draw()
 
