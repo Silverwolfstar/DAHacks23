@@ -2,7 +2,8 @@
     Team: nullptr
     Members: Jessie Kuo, Brandon Phan, Hannah Dinh, An Hoang'''
 
-from game_logic import *
+import random
+from variables import *
 
 # Initialize Pygame
 pygame.init()
@@ -13,7 +14,7 @@ bigFont = pygame.font.SysFont('papyrus', 30, True) #TODO fix this, no papyrus
 
 
 #icon
-gameIcon = pygame.image.load('img/testIcon.png') #TODO add this
+gameIcon = pygame.image.load('img/icon.png') #TODO add this
 pygame.display.set_icon(gameIcon)
 
 
