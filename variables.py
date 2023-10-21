@@ -20,7 +20,6 @@ score = 0
 highScore = 0
 gameOver = False
 objects = []
-#global index
 index = 0 #index of current item
 win = False
 answer = False   #if user anwser is true or false

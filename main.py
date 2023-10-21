@@ -238,6 +238,8 @@ while run:
             gameOverText = bigFont.render('You Win!', True, 'white', 'black')
         else:
             gameOverText = bigFont.render('Game Over!', True, 'white', 'black')
+            #Create end game table
+            pygame.draw.rect(screen, 'black', (SCREEN_WIDTH*1/3,SCREEN_HEIGHT/3,SCREEN_WIDTH*1/3,SCREEN_HEIGHT*1/3-30))
         endScoreText = bigFont.render('Score: ' + str(score) + '/' + str(len(defaultItemList)), True, 'white', 'black')
         replayText = bigFont.render('[Space] to Replay', True, 'white', 'black')
         gameOverTextRect = gameOverText.get_rect()
@@ -249,6 +251,10 @@ while run:
         screen.blit(gameOverText, gameOverTextRect)
         screen.blit(endScoreText, endScoreTextRect)
         screen.blit(replayText, replayTextRect)
+
+
+
+
 
     #item label text
     if myItem:
