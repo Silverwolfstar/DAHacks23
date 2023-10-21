@@ -51,7 +51,7 @@ class Item(pygame.sprite.Sprite):
 
     def draw(self):
         screen.blit(self.item, (SCREEN_WIDTH/2-int(self.item.get_width()/2),
-                                SCREEN_HEIGHT/3 - int(self.item.get_height()/2)))
+                                SCREEN_HEIGHT/4 - int(self.item.get_height()/2)))
 
     #def update(self):
 
@@ -125,7 +125,7 @@ class Button():
 #define entities
 optionsButton = Button(optionsBoxCoord[0], optionsBoxCoord[1],
                        optionsBoxCoord[2], optionsBoxCoord[3], 'Options', Button.myFunction)
-myItem = Item(itemx, itemy - 400, .1)
+myItem = Item(itemx, itemy, .1)
 
 
 run = True
