@@ -35,7 +35,7 @@ class Item(pygame.sprite.Sprite):
             index = random.randint(0, len(availableList)-1)
 
         itemImage = pygame.image.load(availableList[index][2])
-        self.itemAnswer = availableList[index][2]
+        self.itemAnswer = availableList[index][1]
         self.item = pygame.transform.scale(itemImage, (int(itemImage.get_width()*scale),
                                                   int(itemImage.get_height()*scale)))
         self.playerWidth = itemImage.get_width()*scale
@@ -155,6 +155,8 @@ recycleBin = Bin(2,SCREEN_WIDTH/2-120,0.12)
 compostBin = Bin(3,SCREEN_WIDTH-275,0.12)
 
 
+
+
 run = True
 while run:
     #TODO handle pressed keys
@@ -180,17 +182,28 @@ while run:
 
     #event handling
     for event in pygame.event.get():
+        if (hearts_num <1):
+            gameOver = True
         # Key pressed
         if event.type == pygame.KEYDOWN:
             # Check if the key pressed is 1, 2 or 3 and game is not over
             if event.key in key_to_bin_mapping and not gameOver:
                 bin_index = key_to_bin_mapping[event.key]
-                if myItem.getAnswer() != binList[bin_index][1]:
-                    hearts_num -= 1
+                if  binList[bin_index][1] == myItem.getAnswer():
+                    score +=1
+                    print ("HELLO WORLD")
                 else:
-                    score += 1
+                    hearts_num -= 1
+                    print ("Bin index = " , bin_index)
+                    print ("Answer = " , myItem.getAnswer())
+                    print (" XXXXXXXXX ")
+                    ##### HANDLE delete item from available list
+
+                myItem = Item(itemx, itemy - 400, .1)
+                myItem.draw()
+
             # Space to replay
-            if event.key == pygame.K_SPACE and gameOver:
+            elif event.key == pygame.K_SPACE and gameOver:
                 # Reset variables for new game
                 hearts_num = maxHearts
                 gameOver = False
@@ -198,13 +211,12 @@ while run:
                 if score > highScore:
                     highScore = score
                 score = 0
-
         if event.type == pygame.QUIT:
             run = False
 
 
     #game end
-    if (gameOver):
+    if gameOver:
         gameOverText = bigFont.render('Game Over!', True, 'white', 'black')
         endScoreText = bigFont.render('Score: ' + str(score), True, 'black', '#D1FFBD')
         replayText = bigFont.render('[Space] to Replay', True, 'white', 'black')

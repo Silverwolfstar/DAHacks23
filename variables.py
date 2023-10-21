@@ -1,3 +1,6 @@
+
+# importing numpy
+import numpy as np
 import pygame
 
 # Screen settings
@@ -18,21 +21,21 @@ gameOver = False
 objects = []
 index = 0 #index of current item
 win = False
-answer = True   #if user anwser is true or false
+answer = False   #if user anwser is true or false
 
 
 
 defaultItemList = [["pizzaBox", "compost", "img/pizzabox.png"],  #default list of items
                    ["sodaCan", "recycle", "img/sodaCan.png"],
-                   ["plasticContainer", "recycle", "img/pizzabox.png"],
-                   ["glassBottle", "recycle", "img/pizzabox.png"],
-                   ["branches", "compost", "img/pizzabox.png"],
-                   ["flowers", "compost", "img/pizzabox.png"],
-                   ["paper", "compost", "img/pizzabox.png"],
-                   ["chickenBones", "compost", "img/pizzabox.png"],
+                   ["plasticContainer", "recycle", "img/plasticContainer.png"],
+                   ["glassBottle", "recycle", "img/glassBottle.png"],
+                   ["branches", "compost", "img/branches.png"],
+                   ["flowers", "compost", "img/flowers.png"],
+                   ["paper", "compost", "img/paper.png"],
+                   ["chickenBones", "compost", "img/chickenBones.png"],
                    ["chipBags", "trash", "img/pizzabox.png"],
-                   ["styrofoamCup", "trash", "img/pizzabox.png"],
-                   ["cardboard", "recycle", "img/pizzabox.png"],
+                   ["styrofoamCup", "trash", "img/styrofoamCup.png"],
+                   ["cardboard", "recycle", "img/cardboard.png"],
                    ["leaves", "compost", "img/pizzabox.png"],
                    ["blackPlastic", "trash", "img/pizzabox.png"],
                    ["cerealBox", "recycle", "img/pizzabox.png"],
@@ -45,9 +48,9 @@ defaultItemList = [["pizzaBox", "compost", "img/pizzabox.png"],  #default list o
 
 # Copy available list from default
 availableList = defaultItemList[:]
-binList = [[1,"trash","img/trashBin.png"],
-           [2,"recycle","img/recycleBin.png"],
-           [3,"compost","img/compostBin.png"]]
+binList = [["1","trash","img/trashBin.png"],
+           ["2","recycle","img/recycleBin.png"],
+           ["3", "compost","img/compostBin.png"]]
 
 key_to_bin_mapping = {
     pygame.K_1: 0,  # Mapping K_1 to index 0
