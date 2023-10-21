@@ -11,7 +11,7 @@ textBoxCoord = (25, 25, 170, 75)
 optionsBoxCoord = (20, SCREEN_HEIGHT-55, 97, 50)
 
 # Variables
-maxHearts = 3
+maxHearts = 999
 hearts_num = maxHearts
 itemx = 300
 itemy = 450
