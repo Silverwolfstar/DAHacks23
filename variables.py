@@ -25,27 +25,27 @@ win = False
 answer = False   #if user anwser is true or false
 
 
-
-defaultItemList = [["pizzaBox", ["compost"], "img/pizzabox.png"],  #default list of items
-                   ["sodaCan", ["recycle"], "img/sodaCan.png"],
-                   ["plasticContainer", ["recycle"], "img/plasticContainer.png"],
-                   ["glassBottle", ["recycle"], "img/glassBottle.png"],
-                   ["branches", ["compost"], "img/branches.png"],
-                   ["flowers", ["compost"], "img/flowers.png"],
-                   ["paper", ["compost", "recycle"], "img/paper.png"],
-                   ["chickenBones", ["compost"], "img/chickenBones.png"],
-                   ["chipBag", ["trash"], "img/chipBag.png"],
-                   ["styrofoamCup", ["trash"], "img/styrofoamCup.png"],
-                   ["cardboard", ["recycle", "compost"], "img/cardboard.png"],
-                   ["leaves", ["compost"], "img/leaves.png"],
-                   ["blackPlastic", ["trash"], "img/blackPlastic.png"],
-                   ["cerealBox", ["recycle", "compost"], "img/cerealBox.png"],
-                   ["milkCarton", ["recycle"], "img/milkCarton.png"],
-                   ["newspaper", ["compost", "recycle"], "img/newspaper.png"],
-                   ["diapers", ["trash"], "img/diaper.png"],
-                   ["pizzaCrusts", ["compost"], "img/pizzaCrusts.png"],
-                   ["frozenFoodBox", ["trash"], "img/frozenFoodBox.png"],
-                   ["brokenPlate", ["trash"], "img/brokenPlate.png"]]
+#format: [name of item, waste type, img src, label]
+defaultItemList = [["pizzaBox", ["compost"], "img/pizzabox.png", "Pizza Box"],  #default list of items
+                   ["sodaCan", ["recycle"], "img/sodaCan.png", "Soda Can"],
+                   ["plasticContainer", ["recycle"], "img/plasticContainer.png", "Plastic Container"],
+                   ["glassBottle", ["recycle"], "img/glassBottle.png", "Glass Bottle"],
+                   ["branches", ["compost"], "img/branches.png", "Branch"],
+                   ["flowers", ["compost"], "img/flowers.png", "Flower"],
+                   ["paper", ["compost", "recycle"], "img/paper.png", "Paper"],
+                   ["chickenBones", ["compost"], "img/chickenBones.png", "Chicken Bones"],
+                   ["chipBag", ["trash"], "img/chipBag.png", "Chip Bag"],
+                   ["styrofoamCup", ["trash"], "img/styrofoamCup.png", "Styrofoam Cup"],
+                   ["cardboard", ["recycle", "compost"], "img/cardboard.png", "Cardboard"],
+                   ["leaves", ["compost"], "img/leaves.png", "Leaves"],
+                   ["blackPlastic", ["trash"], "img/blackPlastic.png", "Black Plastic"],
+                   ["cerealBox", ["recycle", "compost"], "img/cerealBox.png", "Cereal Box"],
+                   ["milkCarton", ["recycle"], "img/milkCarton.png", "Milk Carton"],
+                   ["newspaper", ["compost", "recycle"], "img/newspaper.png", "Newspaper"],
+                   ["diapers", ["trash"], "img/diaper.png", "Diaper"],
+                   ["pizzaCrusts", ["compost"], "img/pizzaCrusts.png", "Pizza Crusts"],
+                   ["frozenFoodBox", ["trash"], "img/frozenFoodBox.png", "Frozen Food Box"],
+                   ["brokenPlate", ["trash"], "img/brokenPlate.png", "Broken Plate"]]
 
 # Copy available list from default
 availableList = defaultItemList[:]
