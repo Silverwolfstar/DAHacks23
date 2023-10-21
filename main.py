@@ -10,11 +10,10 @@ pygame.init()
 
 pygame.display.set_caption('Recycling Game')
 font = pygame.font.SysFont('papyrus', 38, True)
-bigFont = pygame.font.SysFont('papyrus', 30, True) #TODO fix this, no papyrus
-
+bigFont = pygame.font.SysFont('papyrus', 30, True)
 
 #icon
-gameIcon = pygame.image.load('img/icon.png') #TODO add this
+gameIcon = pygame.image.load('img/icon.png')
 pygame.display.set_icon(gameIcon)
 
 
@@ -40,7 +39,7 @@ class Item(pygame.sprite.Sprite):
 
         itemImage = pygame.image.load(availableList[index][2])
         self.itemAnswers = availableList[index][1]
-        self.index = index #TODO MIGHT NEED TO REMOVE
+        self.index = index
         self.item = pygame.transform.scale(itemImage, (int(itemImage.get_width()*scale),
                                                   int(itemImage.get_height()*scale)))
         self.playerWidth = itemImage.get_width()*scale
@@ -199,11 +198,9 @@ while run:
                 if myItem.getAnswers() is None:
                     win = True
                     print("Congrats you win")
-                    #copy gameOver logic into win, remove next line
                     gameOver = True
                 elif  binList[bin_index][1] in myItem.getAnswers():
                     score +=1
-                    print("index = ", myItem.index)
                     availableList.pop(myItem.index)
                 else:
                     hearts_num -= 1
@@ -223,11 +220,13 @@ while run:
         if event.type == pygame.QUIT:
             run = False
 
-
-    #game end
+    #game loss
     if gameOver:
-        gameOverText = bigFont.render('Game Over!', True, 'white', 'black')
-        endScoreText = bigFont.render('Score: ' + str(score), True, 'black', '#D1FFBD')
+        if win:
+            gameOverText = bigFont.render('You Win!', True, 'white', 'black')
+        else:
+            gameOverText = bigFont.render('Game Over!', True, 'white', 'black')
+        endScoreText = bigFont.render('Score: ' + str(score) + '/' + str(len(defaultItemList)), True, 'black', '#D1FFBD')
         replayText = bigFont.render('[Space] to Replay', True, 'white', 'black')
         gameOverTextRect = gameOverText.get_rect()
         endScoreTextRect = endScoreText.get_rect()
