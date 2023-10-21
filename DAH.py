@@ -3,30 +3,10 @@
     Members: Jessie Kuo, Brandon Phan, Hannah Dinh, An Hoang'''
 
 
-#import libraries
-import pygame
+from game import *
 
-
-#mainClock = pygame.time.Clock()
+# Initialize Pygame
 pygame.init()
-
-#screen settings
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = int(SCREEN_WIDTH * 0.8)
-screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-
-#variables
-maxHearts = 3 #TODO can change later
-hearts = maxHearts #current hearts
-itemx = 300 #x axis
-itemy = 450 #y axis
-textBoxCoord = (25, 25, 170, 75)
-optionsBoxCoord = (20, SCREEN_HEIGHT-55, 97, 50)
-score = 0
-highScore = 0 #might implement a scoreboard? idk
-gameOver = False
-objects = []
-
 
 pygame.display.set_caption('Recycling Game')
 font = pygame.font.SysFont('papyrus', 38, True)
@@ -48,7 +28,7 @@ class Item(pygame.sprite.Sprite):
         super().__init__()
         item = pygame.image.load('img/testItem.png')
         self.item = pygame.transform.scale(item,
-            (int(item.get_width()*scale), int(item.get_height()*scale)))
+                                           (int(item.get_width()*scale), int(item.get_height()*scale)))
         self.playerWidth = item.get_width()*scale
         self.playerHeight = item.get_height()*scale
         self.rect = self.item.get_rect() #current position of item
@@ -63,11 +43,11 @@ class Item(pygame.sprite.Sprite):
 
     def draw(self):
         screen.blit(self.item, (SCREEN_WIDTH/2-int(self.item.get_width()/2),
-                    SCREEN_HEIGHT/3 - int(self.item.get_height()/2)))
-       
+                                SCREEN_HEIGHT/3 - int(self.item.get_height()/2)))
+
     #def update(self):
-       
-        #maybe later
+
+    #maybe later
 
 
 class Button():
@@ -97,7 +77,7 @@ class Button():
 
     def process(self):
         mousePos = pygame.mouse.get_pos()
-       
+
         #button fill color
         self.buttonSurface.fill(self.fillColors['normal'])
         if self.buttonRect.collidepoint(mousePos): #if mouse on button
@@ -119,14 +99,14 @@ class Button():
 
             else:
                 self.alreadyPressed = False
-       
+
         self.buttonSurface.blit(self.buttonSurf, [
             self.buttonRect.width/2 - self.buttonSurf.get_rect().width/2,
             self.buttonRect.height/2 - self.buttonSurf.get_rect().height/2])
         screen.blit(self.buttonSurface, self.buttonRect)
 
 
-    def myFunction():
+    def myFunction(self):
         print('Open Option Menu')
 
 
@@ -136,7 +116,7 @@ class Button():
 
 #define entities
 optionsButton = Button(optionsBoxCoord[0], optionsBoxCoord[1],
-        optionsBoxCoord[2], optionsBoxCoord[3], 'Options', Button.myFunction)
+                       optionsBoxCoord[2], optionsBoxCoord[3], 'Options', Button.myFunction)
 myItem = Item(itemx, itemy - 400, .25)
 
 
@@ -150,16 +130,16 @@ while run:
     #process objects
     for object in objects:
         object.process()
-       
+
     #draw score box
     pygame.draw.rect(screen, 'black', (textBoxCoord[0], textBoxCoord[1],
-        textBoxCoord[2], textBoxCoord[3]), 5)
+                                       textBoxCoord[2], textBoxCoord[3]), 5)
 
 
     #draw option box
     pygame.draw.rect(screen, 'white', (optionsBoxCoord[0], optionsBoxCoord[1],
-        optionsBoxCoord[2], optionsBoxCoord[3]), 3)
-   
+                                       optionsBoxCoord[2], optionsBoxCoord[3]), 3)
+
     #event handling
     for event in pygame.event.get():
         #key pressed
@@ -168,26 +148,26 @@ while run:
                 gameOver = True
             # 1 pressed
             if event.key == pygame.K_1 and hearts > 0 and not gameOver:
-                    #handle answer
-                    pass
+                #handle answer
+                pass
             # 2 pressed
             if event.key == pygame.K_2 and hearts > 0 and not gameOver:
-                    #handle answer
-                    pass
+                #handle answer
+                pass
             # 3 pressed
             if event.key == pygame.K_3 and hearts > 0 and not gameOver:
-                    #handle answer
-                    pass
+                #handle answer
+                pass
             #space to replay
             if event.key == pygame.K_SPACE and gameOver:
-                 #reset variables for new game
+                #reset variables for new game
                 gameOver = False
-            #set new high score
+                #set new high score
                 if (score > highScore):
                     highScore = score
                 score = 0
         if event.type == pygame.QUIT:
-             run = False
+            run = False
 
 
     #game end
@@ -222,5 +202,5 @@ while run:
 
     #update display and clock
     pygame.display.update()
-   
+
 pygame.quit()
