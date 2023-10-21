@@ -64,15 +64,15 @@ class Bin(pygame.sprite.Sprite):
         super().__init__()
         self.binNumber = binNumber
         bin = pygame.image.load(binList[binNumber][2])
-        self.item = pygame.transform.scale(bin, (int(bin.get_width()*scale),
+        self.bin = pygame.transform.scale(bin, (int(bin.get_width()*scale),
                                                   int(bin.get_height()*scale)))
         self.playerWidth = bin.get_width()*scale
         self.playerHeight = bin.get_height()*scale
-        self.rect = self.item.get_rect() #current position of bin
+        self.rect = self.bin.get_rect() #current position of bin
 
     def draw(self):
-        screen.blit(self.item, (SCREEN_WIDTH/2-int(self.item.get_width()/2),
-                                SCREEN_HEIGHT/3 - int(self.item.get_height()/2)))
+        screen.blit(self.bin, (SCREEN_WIDTH/2-int(self.bin.get_width()/2),
+                                SCREEN_HEIGHT/3 - int(self.bin.get_height()/2)))
 
 
 
@@ -144,13 +144,14 @@ class Button():
 optionsButton = Button(optionsBoxCoord[0], optionsBoxCoord[1],
                        optionsBoxCoord[2], optionsBoxCoord[3], 'Options', Button.myFunction)
 myItem = Item(itemx, itemy - 400, .1)
-
+trashBin = Bin(1,200,) ###### AN YOU ARE WORKING HERE
 
 run = True
 while run:
     #TODO handle pressed keys
     screen.fill('#D1FFBD')
     myItem.draw()
+    trashBin.draw()
 
 
     #process objects
@@ -239,7 +240,7 @@ while run:
     scaled_heart = pygame.transform.scale(heart_img, (150, 50))
     screen.blit(scaled_heart, (SCREEN_WIDTH*4/5, 20))
 
-    #Bins
+
 
 
 
