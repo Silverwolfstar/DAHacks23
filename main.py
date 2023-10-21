@@ -265,6 +265,7 @@ while run:
     scoreTextRect = scoreText.get_rect()
     scoreTextRect.topleft = (SCREEN_WIDTH/22, 35)
     screen.blit(scoreText, scoreTextRect)
+    textBoxCoord = (25, 25, scoreText.get_width() + 20, scoreText.get_height()+10)
 
 
     #high score

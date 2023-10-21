@@ -10,6 +10,7 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 textBoxCoord = (25, 25, 185, 75)
 optionsBoxCoord = (20, SCREEN_HEIGHT-55, 97, 50)
 
+
 # Variables
 maxHearts = 3
 hearts_num = maxHearts
