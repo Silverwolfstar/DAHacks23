@@ -25,27 +25,27 @@ win = False
 answer = False   #if user anwser is true or false
 
 
-#format: [name of item, waste type, img src, label]
-defaultItemList = [["pizzaBox", ["compost"], "img/pizzabox.png", "Pizza Box"],  #default list of items
-                   ["sodaCan", ["recycle"], "img/sodaCan.png", "Soda Can"],
-                   ["plasticContainer", ["recycle"], "img/plasticContainer.png", "Plastic Container"],
-                   ["glassBottle", ["recycle"], "img/glassBottle.png", "Glass Bottle"],
-                   ["branches", ["compost"], "img/branches.png", "Branch"],
-                   ["flowers", ["compost"], "img/flowers.png", "Flower"],
-                   ["paper", ["compost", "recycle"], "img/paper.png", "Paper"],
-                   ["chickenBones", ["compost"], "img/chickenBones.png", "Chicken Bones"],
-                   ["chipBag", ["trash"], "img/chipBag.png", "Chip Bag"],
-                   ["styrofoamCup", ["trash"], "img/styrofoamCup.png", "Styrofoam Cup"],
-                   ["cardboard", ["recycle", "compost"], "img/cardboard.png", "Cardboard"],
-                   ["leaves", ["compost"], "img/leaves.png", "Leaves"],
-                   ["blackPlastic", ["trash"], "img/blackPlastic.png", "Black Plastic"],
-                   ["cerealBox", ["recycle", "compost"], "img/cerealBox.png", "Cereal Box"],
-                   ["milkCarton", ["recycle"], "img/milkCarton.png", "Milk Carton"],
-                   ["newspaper", ["compost", "recycle"], "img/newspaper.png", "Newspaper"],
-                   ["diapers", ["trash"], "img/diaper.png", "Diaper"],
-                   ["pizzaCrusts", ["compost"], "img/pizzaCrusts.png", "Pizza Crusts"],
-                   ["frozenFoodBox", ["trash"], "img/frozenFoodBox.png", "Frozen Food Box"],
-                   ["brokenPlate", ["trash"], "img/brokenPlate.png", "Broken Plate"]]
+#format: [name of item, waste type, img src, label, explanation]
+defaultItemList = [["pizzaBox", ["compost"], "img/pizzabox.png", "Pizza Box", "Greasy cardboard cannot be recycled, but can be placed into the compost!"],  #default list of items
+                   ["sodaCan", ["recycle"], "img/sodaCan.png", "Soda Can", "Metal cans can be recycled!"],
+                   ["plasticContainer", ["recycle"], "img/plasticContainer.png", "Plastic Container", "Plastic containers can be recycled!"],
+                   ["glassBottle", ["recycle"], "img/glassBottle.png", "Glass Bottle", "Glass bottles can be recycled!"],
+                   ["branches", ["compost"], "img/branches.png", "Branch", "Organic matter can be composted!"],
+                   ["flowers", ["compost"], "img/flowers.png", "Flower", "Organic matter can be composted!"],
+                   ["paper", ["compost", "recycle"], "img/paper.png", "Paper", "Paper can be recycled or composted!"],
+                   ["chickenBones", ["compost"], "img/chickenBones.png", "Chicken Bones", "Organic matter can be composted!"],
+                   ["chipBag", ["trash"], "img/chipBag.png", "Chip Bag", "Chip bags cannot be recycled or composted."],
+                   ["styrofoamCup", ["trash"], "img/styrofoamCup.png", "Styrofoam Cup", "Styrofoam cannot be recycled or composted."],
+                   ["cardboard", ["recycle", "compost"], "img/cardboard.png", "Cardboard", "Cardboard can be recycled or composted!"],
+                   ["leaves", ["compost"], "img/leaves.png", "Leaves", "Organic matter can be composted!"],
+                   ["blackPlastic", ["trash"], "img/blackPlastic.png", "Black Plastic", "Black plastic cannot be recycled."],
+                   ["cerealBox", ["recycle", "compost"], "img/cerealBox.png", "Cereal Box", "Cardboard can be recycled or composted!"],
+                   ["milkCarton", ["recycle"], "img/milkCarton.png", "Milk Carton", "Milk cartons can be recycled!"],
+                   ["newspaper", ["compost", "recycle"], "img/newspaper.png", "Newspaper", "Newspaper can be recycled or composted!"],
+                   ["diapers", ["trash"], "img/diaper.png", "Diaper", "Diapers cannot be recycled or composted."],
+                   ["pizzaCrusts", ["compost"], "img/pizzaCrusts.png", "Pizza Crusts", "Leftover food can be composted!"],
+                   ["frozenFoodBox", ["trash"], "img/frozenFoodBox.png", "Frozen Food Box", "Frozen food boxes contain a plastic coating, and therefore cannot be recycled or composted."],
+                   ["brokenPlate", ["trash"], "img/brokenPlate.png", "Broken Plate", "Broken ceramic cannot be recycled or composted."]]
 
 # Copy available list from default
 availableList = defaultItemList[:]
