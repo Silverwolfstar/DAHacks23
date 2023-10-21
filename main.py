@@ -2,7 +2,6 @@
     Team: nullptr
     Members: Jessie Kuo, Brandon Phan, Hannah Dinh, An Hoang'''
 
-
 from game_logic import *
 
 # Initialize Pygame
@@ -26,13 +25,16 @@ class Item(pygame.sprite.Sprite):
 
     def __init__(self, x, y, scale):
         super().__init__()
-        #if no more items in availableList, then win game
-        if (len(availableList) < 1):
-            #pick random item to load, then remove from availableList
-            win = True
-            gameOver = True #TODO
-        else:
-            index = random.randint(0, len(availableList)-1)
+        # #if no more items in availableList, then win game
+        # if (len(availableList) < 1):     #pick random item to load, then remove from availableList
+        #     win = True
+        #     gameOver = True #TODO
+        # else:
+        if not availableList:
+            gameOver = True
+            self.item = None
+            return  # Exit the __init__ early if the game is won
+        index = random.randint(0, len(availableList)-1)
 
         itemImage = pygame.image.load(availableList[index][2])
         self.itemAnswer = availableList[index][1]
@@ -43,7 +45,8 @@ class Item(pygame.sprite.Sprite):
         self.rect = self.item.get_rect() #current position of item
 
     def getAnswer(self):
-        return self.itemAnswer
+        if (self.item):
+            return self.itemAnswer
 
     def move(self):
         #TODO: implement drag and drop
@@ -52,7 +55,8 @@ class Item(pygame.sprite.Sprite):
 
 
     def draw(self):
-        screen.blit(self.item, (SCREEN_WIDTH/2-int(self.item.get_width()/2),
+        if (self.item):
+            screen.blit(self.item, (SCREEN_WIDTH/2-int(self.item.get_width()/2),
                                 SCREEN_HEIGHT/3 - int(self.item.get_height()/2)))
 
     #def update(self):
@@ -191,14 +195,11 @@ while run:
                 bin_index = key_to_bin_mapping[event.key]
                 if  binList[bin_index][1] == myItem.getAnswer():
                     score +=1
-                    print ("HELLO WORLD")
+                    availableList.pop(bin_index)
                 else:
                     hearts_num -= 1
-                    print ("Bin index = " , bin_index)
-                    print ("Answer = " , myItem.getAnswer())
-                    print (" XXXXXXXXX ")
-                    ##### HANDLE delete item from available list
 
+                print (availableList)
                 myItem = Item(itemx, itemy - 400, .1)
                 myItem.draw()
 
@@ -246,22 +247,8 @@ while run:
     screen.blit(highScoreText, highScoreTextRect)
 
     #Hearts
-    # Load and scale the heart images
-    if (hearts_num == 3):
-        heart_img = pygame.image.load('img/threeHearts.png')
-    elif (hearts_num == 2):
-        heart_img = pygame.image.load('img/twoHearts.png')
-    elif (hearts_num == 1):
-        heart_img = pygame.image.load('img/oneHeart.png')
-    else:
-        heart_img = pygame.image.load('img/noHearts.png')
-    scaled_heart = pygame.transform.scale(heart_img, (150, 50))
+    scaled_heart = pygame.transform.scale(heart_images.get(hearts_num, heart_images[0]), (150, 50))
     screen.blit(scaled_heart, (SCREEN_WIDTH*4/5, 20))
-
-
-
-
-
 
 
     #update display and clock

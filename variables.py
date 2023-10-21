@@ -19,7 +19,8 @@ score = 0
 highScore = 0
 gameOver = False
 objects = []
-index = 0 #index of current item
+global index
+#index = 0 #index of current item
 win = False
 answer = False   #if user anwser is true or false
 
@@ -36,15 +37,15 @@ defaultItemList = [["pizzaBox", "compost", "img/pizzabox.png"],  #default list o
                    ["chipBags", "trash", "img/pizzabox.png"],
                    ["styrofoamCup", "trash", "img/styrofoamCup.png"],
                    ["cardboard", "recycle", "img/cardboard.png"],
-                   ["leaves", "compost", "img/pizzabox.png"],
-                   ["blackPlastic", "trash", "img/pizzabox.png"],
-                   ["cerealBox", "recycle", "img/pizzabox.png"],
-                   ["milkCarton", "recycle", "img/pizzabox.png"],
-                   ["newspaper", "recycle", "img/pizzabox.png"],
-                   ["diapers", "trash", "img/pizzabox.png"],
-                   ["pizzaCrusts", "compost", "img/pizzabox.png"],
-                   ["frozenFoodBox", "trash", "img/pizzabox.png"],
-                   ["brokenPlate", "trash", "img/pizzabox.png"]]
+                   ["leaves", "compost", "img/leaves.png"],
+                   ["blackPlastic", "trash", "img/blackPlastic.png"],
+                   ["cerealBox", "recycle", "img/cerealBox.png"],
+                   ["milkCarton", "recycle", "img/milkCarton.png"],
+                   ["newspaper", "recycle", "img/newspaper.png"],
+                   ["diapers", "trash", "img/diaper.png"],
+                   ["pizzaCrusts", "compost", "img/pizzaCrusts.png"],
+                   ["frozenFoodBox", "trash", "img/frozenFoodBox.png"],
+                   ["brokenPlate", "trash", "img/brokenPlate.png"]]
 
 # Copy available list from default
 availableList = defaultItemList[:]
@@ -56,4 +57,11 @@ key_to_bin_mapping = {
     pygame.K_1: 0,  # Mapping K_1 to index 0
     pygame.K_2: 1,  # Mapping K_2 to index 1
     pygame.K_3: 2   # Mapping K_3 to index 2
+}
+
+heart_images = {
+    3: pygame.image.load('img/threeHearts.png'),
+    2: pygame.image.load('img/twoHearts.png'),
+    1: pygame.image.load('img/oneHeart.png'),
+    0: pygame.image.load('img/noHearts.png')
 }
