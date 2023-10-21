@@ -151,8 +151,8 @@ class Button():
 
 
 #define entities
-optionsButton = Button(optionsBoxCoord[0], optionsBoxCoord[1],
-                       optionsBoxCoord[2], optionsBoxCoord[3], 'Options', Button.myFunction)
+#optionsButton = Button(optionsBoxCoord[0], optionsBoxCoord[1],
+#                       optionsBoxCoord[2], optionsBoxCoord[3], 'Options', Button.myFunction)
 myItem = Item(itemx, itemy - 400, .1)
 
 ###### NEED TO CHANGE TRASH BIN X-POSITION FOR DIFFERENT SCREEN SIZE
@@ -183,8 +183,8 @@ while run:
 
 
     #draw option box
-    pygame.draw.rect(screen, 'white', (optionsBoxCoord[0], optionsBoxCoord[1],
-                                       optionsBoxCoord[2], optionsBoxCoord[3]), 3)
+    #pygame.draw.rect(screen, 'white', (optionsBoxCoord[0], optionsBoxCoord[1],
+    #                                   optionsBoxCoord[2], optionsBoxCoord[3]), 3)
 
     #event handling
     for event in pygame.event.get():
