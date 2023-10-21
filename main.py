@@ -145,9 +145,6 @@ class Button():
             self.buttonRect.height/2 - self.buttonSurf.get_rect().height/2])
         screen.blit(self.buttonSurface, self.buttonRect)
 
-
-    def myFunction(self):
-        print('Open Option Menu')
     def myFunction():
         print('Open Option Menu')
         optionsbox = Button(BoxCoords[0],BoxCoords[1],BoxCoords[2], BoxCoords[3], 'Volume: ■■■■■■■■■■■■■■■■')
