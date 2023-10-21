@@ -45,3 +45,6 @@ defaultItemList = [["pizzaBox", "compost", "img/pizzabox.png"],  #default list o
 
 # Copy available list from default
 availableList = defaultItemList[:]
+binList = [[1,"trash","img/trashBin.png"],
+           [2,"recycle","img/recycleBin.png"],
+           [3,"compost","img/compostBin.png"]]

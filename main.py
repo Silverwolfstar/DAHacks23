@@ -40,7 +40,6 @@ class Item(pygame.sprite.Sprite):
         self.playerWidth = item.get_width()*scale
         self.playerHeight = item.get_height()*scale
         self.rect = self.item.get_rect() #current position of item
-        self.rect.center = (x, y)
 
 
     def move(self):
@@ -56,6 +55,25 @@ class Item(pygame.sprite.Sprite):
     #def update(self):
 
     #maybe later
+
+class Bin(pygame.sprite.Sprite):
+    binWidth = 0
+    binHeight = 0
+
+    def __init__(self, binNumber, x, scale):
+        super().__init__()
+        self.binNumber = binNumber
+        bin = pygame.image.load(binList[binNumber][2])
+        self.item = pygame.transform.scale(bin, (int(bin.get_width()*scale),
+                                                  int(bin.get_height()*scale)))
+        self.playerWidth = bin.get_width()*scale
+        self.playerHeight = bin.get_height()*scale
+        self.rect = self.item.get_rect() #current position of bin
+
+    def draw(self):
+        screen.blit(self.item, (SCREEN_WIDTH/2-int(self.item.get_width()/2),
+                                SCREEN_HEIGHT/3 - int(self.item.get_height()/2)))
+
 
 
 class Button():
@@ -220,6 +238,9 @@ while run:
         heart_img = pygame.image.load('img/noHearts.png')
     scaled_heart = pygame.transform.scale(heart_img, (150, 50))
     screen.blit(scaled_heart, (SCREEN_WIDTH*4/5, 20))
+
+    #Bins
+
 
 
 
