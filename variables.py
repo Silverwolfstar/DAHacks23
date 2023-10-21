@@ -16,26 +16,30 @@ score = 0
 highScore = 0
 gameOver = False
 objects = []
+index = 0 #index of current item
+win = False
 
 
-defaultItemList = [["pizzaBox", "compost", "pizzabox.png"],  #default list of items
-                   ["sodaCan", "recycle", "sodaCan.png"],
-                   ["plasticContainer", "recycle", "pizzabox.png"],
-                   ["glassBottle", "recycle", "pizzabox.png"],
-                   ["branches", "compost", "pizzabox.png"],
-                   ["flowers", "compost", "pizzabox.png"],
-                   ["paper", "compost", "pizzabox.png"],
-                   ["chickenBones", "compost", "pizzabox.png"],
-                   ["chipBags", "trash", "pizzabox.png"],
-                   ["styrofoamCup", "trash", "pizzabox.png"],
-                   ["cardboard", "recycle", "pizzabox.png"],
-                   ["leaves", "compost", "pizzabox.png"],
-                   ["blackPlastic", "trash", "pizzabox.png"],
-                   ["cerealBox", "recycle", "pizzabox.png"],
-                   ["milkCarton", "recycle", "pizzabox.png"],
-                   ["newspaper", "recycle", "pizzabox.png"],
-                   ["diapers", "trash", "pizzabox.png"],
-                   ["pizzaCrusts", "compost", "pizzabox.png"],
-                   ["frozenFoodBox", "trash", "pizzabox.png"],
-                   ["brokenPlate", "trash", "pizzabox.png"]]
+defaultItemList = [["pizzaBox", "compost", "img/pizzabox.png"],  #default list of items
+                   ["sodaCan", "recycle", "img/sodaCan.png"],
+                   ["plasticContainer", "recycle", "img/pizzabox.png"],
+                   ["glassBottle", "recycle", "img/pizzabox.png"],
+                   ["branches", "compost", "img/pizzabox.png"],
+                   ["flowers", "compost", "img/pizzabox.png"],
+                   ["paper", "compost", "img/pizzabox.png"],
+                   ["chickenBones", "compost", "img/pizzabox.png"],
+                   ["chipBags", "trash", "img/pizzabox.png"],
+                   ["styrofoamCup", "trash", "img/pizzabox.png"],
+                   ["cardboard", "recycle", "img/pizzabox.png"],
+                   ["leaves", "compost", "img/pizzabox.png"],
+                   ["blackPlastic", "trash", "img/pizzabox.png"],
+                   ["cerealBox", "recycle", "img/pizzabox.png"],
+                   ["milkCarton", "recycle", "img/pizzabox.png"],
+                   ["newspaper", "recycle", "img/pizzabox.png"],
+                   ["diapers", "trash", "img/pizzabox.png"],
+                   ["pizzaCrusts", "compost", "img/pizzabox.png"],
+                   ["frozenFoodBox", "trash", "img/pizzabox.png"],
+                   ["brokenPlate", "trash", "img/pizzabox.png"]]
+
+# Copy available list from default
 availableList = defaultItemList[:]
