@@ -51,7 +51,7 @@ class Item(pygame.sprite.Sprite):
 
     def draw(self):
         screen.blit(self.item, (SCREEN_WIDTH/2-int(self.item.get_width()/2),
-                                SCREEN_HEIGHT/4 - int(self.item.get_height()/2)))
+                                SCREEN_HEIGHT/3 - int(self.item.get_height()/2)))
 
     #def update(self):
 
@@ -125,7 +125,7 @@ class Button():
 #define entities
 optionsButton = Button(optionsBoxCoord[0], optionsBoxCoord[1],
                        optionsBoxCoord[2], optionsBoxCoord[3], 'Options', Button.myFunction)
-myItem = Item(itemx, itemy, .1)
+myItem = Item(itemx, itemy - 400, .1)
 
 
 run = True
@@ -152,18 +152,18 @@ while run:
     for event in pygame.event.get():
         #key pressed
         if event.type == pygame.USEREVENT:
-            if hearts < 1:
+            if hearts_num < 1:
                 gameOver = True
             # 1 pressed
-            if event.key == pygame.K_1 and hearts > 0 and not gameOver:
+            if event.key == pygame.K_1 and not gameOver:
                 #handle answer
                 pass
             # 2 pressed
-            if event.key == pygame.K_2 and hearts > 0 and not gameOver:
+            if event.key == pygame.K_2 and not gameOver:
                 #handle answer
                 pass
             # 3 pressed
-            if event.key == pygame.K_3 and hearts > 0 and not gameOver:
+            if event.key == pygame.K_3 and not gameOver:
                 #handle answer
                 pass
             #space to replay
@@ -207,6 +207,22 @@ while run:
     highScoreTextRect = highScoreText.get_rect()
     highScoreTextRect.topleft = (500, 600)
     screen.blit(highScoreText, highScoreTextRect)
+
+    #Hearts
+    # Load and scale the heart images
+    if (hearts_num == 3):
+        heart_img = pygame.image.load('img/threeHearts.png')
+    elif (hearts_num == 2):
+        heart_img = pygame.image.load('img/twoHearts.png')
+    elif (hearts_num == 1):
+        heart_img = pygame.image.load('img/oneHeart.png')
+    else:
+        heart_img = pygame.image.load('img/noHearts.png')
+    scaled_heart = pygame.transform.scale(heart_img, (150, 50))
+    screen.blit(scaled_heart, (SCREEN_WIDTH*4/5, 20))
+
+
+
 
     #update display and clock
     pygame.display.update()

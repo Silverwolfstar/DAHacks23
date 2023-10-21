@@ -9,7 +9,7 @@ optionsBoxCoord = (20, SCREEN_HEIGHT-55, 97, 50)
 
 # Variables
 maxHearts = 3
-hearts = maxHearts
+hearts_num = maxHearts
 itemx = 300
 itemy = 450
 score = 0
@@ -18,6 +18,8 @@ gameOver = False
 objects = []
 index = 0 #index of current item
 win = False
+answer = True   #if user anwser is true or false
+
 
 
 defaultItemList = [["pizzaBox", "compost", "img/pizzabox.png"],  #default list of items
