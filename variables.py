@@ -7,7 +7,7 @@ import pygame
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = int(SCREEN_WIDTH * 0.8)
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-textBoxCoord = (25, 25, 170, 75)
+textBoxCoord = (25, 25, 185, 75)
 optionsBoxCoord = (20, SCREEN_HEIGHT-55, 97, 50)
 
 # Variables

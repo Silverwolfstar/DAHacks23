@@ -252,15 +252,15 @@ while run:
         labelText = font.render(myItem.label, True, 'black', None)
         #labelText = pygame.transform.scale(labelText,(100,40))
         labelTextRect = labelText.get_rect()
-        labelTextRect.topleft = (SCREEN_WIDTH/2 - (labelText.get_width()/2), SCREEN_HEIGHT/2 - (labelText.get_height()/2))
+        labelTextRect.topleft = (SCREEN_WIDTH/2 - (labelText.get_width()/3), SCREEN_HEIGHT/2 - (labelText.get_height()/2))
         screen.blit(labelText, labelTextRect)
 
 
     #score text
-    scoreText = font.render('Score:  ' + str(score), True, '#006600', '#D1FFBD')
+    scoreText = font.render('Score:  ' + str(score), True, '#006600', None)
     # scoreText = pygame.transform.scale(scoreText,(100,40))
     scoreTextRect = scoreText.get_rect()
-    scoreTextRect.topleft = (50, 35)
+    scoreTextRect.topleft = (SCREEN_WIDTH/22, 35)
     screen.blit(scoreText, scoreTextRect)
 
 
