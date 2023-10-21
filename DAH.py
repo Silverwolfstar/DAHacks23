@@ -223,7 +223,7 @@ while run:
 
 
     #options
-    optionsText = font.render('Options', True, 'white')
+    optionsText = font.render('Options', True, 'grey')
     optionsTextRect = optionsText.get_rect()
     optionsTextRect.topleft = (25, 590)
     screen.blit(optionsText, optionsTextRect)
