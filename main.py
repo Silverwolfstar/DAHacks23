@@ -148,6 +148,14 @@ class Button():
 
     def myFunction(self):
         print('Open Option Menu')
+    def myFunction():
+        print('Open Option Menu')
+        optionsbox = Button(BoxCoords[0],BoxCoords[1],BoxCoords[2], BoxCoords[3], 'Volume: ■■■■■■■■■■■■■■■■')
+    
+    def Qfunction():
+        print('Open FnQ')
+        Qbox = Button(BoxCoords[0], BoxCoords[1],
+                      BoxCoords[2], BoxCoords[3], 'Recycling is cool')
 
 
 #Below is example of multipress button
@@ -158,6 +166,8 @@ class Button():
 #optionsButton = Button(optionsBoxCoord[0], optionsBoxCoord[1],
 #                       optionsBoxCoord[2], optionsBoxCoord[3], 'Options', Button.myFunction)
 myItem = Item(itemx, itemy - 400, .1)
+FQbutton = Button(questionboxcoord[0], questionboxcoord[1],
+                      questionboxcoord[2], questionboxcoord[3], '?', Button.Qfunction)
 
 ###### NEED TO CHANGE TRASH BIN X-POSITION FOR DIFFERENT SCREEN SIZE
 trashBin = Bin(1,10,0.12)
