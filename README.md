@@ -5,7 +5,7 @@ Team nullptr - Jessie Kuo, Hannah Dinh, An Hoang, Brandon Phan
 
 Recycling Game
 
-Purpose: To teach young students how to properly separate waste for recycling.
+Purpose: To teach young students how to properly separate waste for recycling. 
 
 How to Play:
 For each piece of waste, press the corresponding key for the bin it belongs in!
