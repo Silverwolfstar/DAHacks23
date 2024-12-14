@@ -9,7 +9,7 @@ SCREEN_HEIGHT = int(SCREEN_WIDTH * 0.8)
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 textBoxCoord = (25, 25, 185, 75)
 optionsBoxCoord = (20, SCREEN_HEIGHT-55, 97, 50)
-
+BoxCoords = (250, SCREEN_HEIGHT-80, 300, 69)
 
 # Variables
 maxHearts = 3
